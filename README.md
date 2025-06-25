@@ -1,0 +1,2 @@
+# license-check-gha
+
