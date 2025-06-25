@@ -1,35 +1,18 @@
-function IsDisallowedPackage {
+function ContainsPackage {
     param(
         [string]$packageName,
         [string]$packageVersion,
-        [array]$disallowedPackages
+        [array]$packages
     )
-    foreach ($disallowedPackage in $disallowedPackages) {
-        if ($disallowedPackage.name -like $packageName) {
-            $minVersion = $disallowedPackage.minVersion
-            $maxVersion = $disallowedPackage.maxVersion
 
-            if ([string]::IsNullOrEmpty($minVersion) -or [version]$packageVersion -ge [version]$minVersion) {
-            if ([string]::IsNullOrEmpty($maxVersion) -or [version]$packageVersion -le [version]$maxVersion) {
-                return $true
-            }
-            }
-        }
+    if (-not $packageName -or -not $packageVersion -or -not $packages) {
+        return $false
     }
-    return $false
-}
 
-function IsAllowedPackage {
-    param(
-        [string]$packageName,
-        [string]$packageVersion,
-        [array]$allowedPackages
-    )
-
-    foreach ($allowedPackage in $allowedPackages) {
-        if ($allowedPackage.name -eq $packageName) {
-            $minVersion = $allowedPackage.minVersion
-            $maxVersion = $allowedPackage.maxVersion
+    foreach ($package in $packages) {
+        if ($package.name -eq $packageName) {
+            $minVersion = $package.minVersion
+            $maxVersion = $package.maxVersion
 
             if (-not [string]::IsNullOrEmpty($minVersion) -and [version]$packageVersion -lt [version]$minVersion) {
                 return $false
@@ -40,5 +23,5 @@ function IsAllowedPackage {
             return $true
         }
     }
-    return $true
+    return $false
 }

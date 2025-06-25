@@ -1,4 +1,4 @@
-name: DevSecOps CI
+name: Sample Application License Scan
 
 on:
   workflow_dispatch:
@@ -15,4 +15,4 @@ jobs:
     name: Scan (open-source) licenses
     uses: ./.github/workflows/_license-check.yml
     with:
-      WORKING_DIRECTORY: './samples/basic'
+      WORKING_DIRECTORY: './samples/basic/SimpleConsoleApplication'

@@ -52,6 +52,38 @@ jobs:
                     WORKING_DIRECTORY: ${{ inputs.WORKING_DIRECTORY }}
 ```
 
+### Configuration
+
+By default the Github Action searched for a file called `license-rules.json` in the working directory of the application. The `license-rules.json` file allows you to customize license validation for your project. Here’s an explanation of each setting:
+
+- **allowedLicenses**:  
+    An array of license names that are permitted for use. Packages with licenses not listed here will be flagged as non-compliant.
+
+- **disallowedPackages**:  
+    A list of specific packages that are not allowed, regardless of their license. Each entry can specify a `name` and an optional `minVersion` and `maxVersion` to block only certain versions or higher.
+
+- **allowedPackages**:  
+    A list of package names hat are always allowed, even if their license is not in `allowedLicenses`. This is useful for exceptions or internal packages. Each entry can specify a `name` and an optional `minVersion` and `maxVersion` to block only certain versions or higher.
+
+Adjust these settings to match your organization’s compliance requirements.
+
+```json
+{
+    "allowedLicenses": ["MIT", "Project References", "Apache-2.0", "EULA.md", "Microsoft Software License", "BSD-3-Clause", "EULA-agreement.txt"],
+    "disallowedPackages": [
+        {
+            "name": "Moq",
+            "minVersion": "4.20"
+        }
+    ],
+    "allowedPackages": [
+        {
+            "name": "SixLabors.ImageSharp"
+        }
+    ]
+}
+```
+
 ### License
 
 This project is licensed under the [MIT License](LICENSE).
