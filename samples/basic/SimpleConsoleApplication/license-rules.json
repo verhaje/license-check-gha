@@ -1,0 +1,14 @@
+{
+    "allowedLicenses": ["MIT", "Project References", "Apache-2.0", "EULA.md", "Microsoft Software License", "BSD-3-Clause", "EULA-agreement.txt"],
+    "disallowedPackages": [
+        {
+            "name": "Moq",
+            "minVersion": "4.20"
+        }
+    ],
+    "allowedPackages": [
+        {
+            "name": "SixLabors.ImageSharp"
+        }
+    ]
+}

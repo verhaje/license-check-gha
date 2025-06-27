@@ -1,0 +1,22 @@
+name: 'nuget licenses'
+description: 'analyze the nuget licenses'
+
+inputs:
+    WORKING_DIRECTORY:
+      default: .
+      required: false
+      description: 'The working directory'
+
+runs:
+  using: 'composite'
+  steps:
+      - name: Install dotnet Delice
+        shell: bash
+        run: |
+          dotnet tool install -g dotnet-delice --version 2.1.0
+      
+      - name: Run Nuget-licensing issues
+        shell: pwsh
+        run: |
+          & "$env:GITHUB_ACTION_PATH/process.ps1" `
+            -workingDir "${{ inputs.WORKING_DIRECTORY }}"
