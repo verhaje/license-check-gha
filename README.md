@@ -63,7 +63,7 @@ By default the Github Action searched for a file called `license-rules.json` in 
     A list of specific packages that are not allowed, regardless of their license. Each entry can specify a `name` and an optional `minVersion` and `maxVersion` to block only certain versions or higher.
 
 - **allowedPackages**:  
-    A list of package names hat are always allowed, even if their license is not in `allowedLicenses`. This is useful for exceptions or internal packages. Each entry can specify a `name` and an optional `minVersion` and `maxVersion` to block only certain versions or higher.
+    A list of package names that are always allowed, even if their license is not in `allowedLicenses`. This is useful for exceptions or internal packages. Each entry can specify a `name` and an optional `minVersion` and `maxVersion` to block only certain versions or higher.
 
 Adjust these settings to match your organization’s compliance requirements.
 
